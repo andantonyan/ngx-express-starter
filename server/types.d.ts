@@ -3,5 +3,4 @@ export interface IConfig {
   secret?: string;
   env?: string;
   fileLog?: string | boolean;
-  useNgExpressEngine?: boolean;
 }

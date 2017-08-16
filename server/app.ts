@@ -51,7 +51,7 @@ app.use((req, res, next) => {
 });
 
 // api routes
-app.get('/', config.useNgExpressEngine ? universalRouter : staticRouter);
+app.get('/', process.env.UNIVERSAL_APP ? universalRouter : staticRouter);
 app.use('/api/info', infoRouter);
 
 app.use(express.static(path.join(__dirname, '../client/platform-browser')));
@@ -64,7 +64,7 @@ function staticRouter(req, res) {
   res.sendfile(path.join(__dirname, '../client/platform-browser/index.html'));
 }
 
-if (config.useNgExpressEngine) {
+if (process.env.UNIVERSAL_APP) {
   const appServer = require('../client/platform-server/main.bundle');
   app.engine('html', ngUniversal.ngExpressEngine({
     bootstrap: appServer.AppServerModuleNgFactory
@@ -73,7 +73,7 @@ if (config.useNgExpressEngine) {
   app.set('views', path.join(__dirname, '../client/platform-browser'));
 }
 
-app.get('/', config.useNgExpressEngine ? universalRouter : staticRouter);
+app.get('/', process.env.UNIVERSAL_APP ? universalRouter : staticRouter);
 
 // catch 404 and forward to error handler
 app.use((req: express.Request, res: express.Response, next) => {
