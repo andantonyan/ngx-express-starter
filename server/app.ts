@@ -7,6 +7,8 @@ import * as cookie from 'cookie-parser';
 import * as morgan from 'morgan';
 import * as config from './config';
 import { randomBytes } from 'crypto';
+import * as ngUniversal from '@nguniversal/express-engine';
+import 'zone.js/dist/zone-node';
 
 import { infoRouter } from './routes/info/info.route';
 import { logger, loggerStream } from './services/util/util.service';
@@ -47,13 +49,31 @@ app.use((req, res, next) => {
 
   next();
 });
+
 // api routes
+app.get('/', config.useNgExpressEngine ? universalRouter : staticRouter);
 app.use('/api/info', infoRouter);
 
-if (app.get('env') === 'production') {
-  // in production mode run application from dist folder
-  app.use(express.static(path.join(__dirname, '/../client')));
+app.use(express.static(path.join(__dirname, '../client/platform-browser')));
+
+function universalRouter(req, res) {
+  res.render('index', { req, res });
 }
+
+function staticRouter(req, res) {
+  res.sendfile(path.join(__dirname, '../client/platform-browser/index.html'));
+}
+
+if (config.useNgExpressEngine) {
+  const appServer = require('../client/platform-server/main.bundle');
+  app.engine('html', ngUniversal.ngExpressEngine({
+    bootstrap: appServer.AppServerModuleNgFactory
+  }));
+  app.set('view engine', 'html');
+  app.set('views', path.join(__dirname, '../client/platform-browser'));
+}
+
+app.get('/', config.useNgExpressEngine ? universalRouter : staticRouter);
 
 // catch 404 and forward to error handler
 app.use((req: express.Request, res: express.Response, next) => {

@@ -2,12 +2,13 @@
 
 import * as http from 'http';
 import { app } from '../app';
-import { serverPort } from '../config';
+import * as config from '../config';
+const debug = require('debug')('ng-starter');
 
 /**
  * Get port from environment and store in Express.
  */
-const port = normalizePort(process.env.PORT || serverPort);
+const port = normalizePort(config.port);
 app.set('port', port);
 
 /**
@@ -81,4 +82,6 @@ function onListening() {
   const bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
+
+  debug('Listening on ' + bind);
 }

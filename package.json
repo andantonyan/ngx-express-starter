@@ -13,7 +13,10 @@
     "e2e": "ng e2e",
     "e2e:client": "ng e2e",
     "_server:run": "tsc -p ./server && concurrently \"tsc -w -p ./server\" \"nodemon dist/server/bin/www.js\" ",
-    "_server:build": "tsc -p ./server"
+    "_server:build": "tsc -p ./server",
+
+    "_client:build": "ng build --prod",
+    "_client:build:universal": "ng build --prod && ng build --prod --app ng-starter --output-hashing=none"
   },
   "repository": {
     "url": "https://github.com/andantonyan/ng-starter"

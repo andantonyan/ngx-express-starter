@@ -30,4 +30,6 @@ function createConfig() {
   return config;
 }
 
-export = createConfig();
+const config = createConfig();
+
+export = config;

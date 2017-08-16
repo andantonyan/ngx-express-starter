@@ -44,3 +44,4 @@ Thumbs.db
 
 # Server
 server/config/local.ts
+ng-starter.log

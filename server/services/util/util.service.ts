@@ -28,7 +28,7 @@ const logger = new winston.Logger({
   exitOnError: false
 });
 
-const loggerStream = {
+const loggerStream: any = {
   write: (message, encoding) => logger.info(message)
 };
 
