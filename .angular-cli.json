@@ -6,7 +6,7 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "dist",
+      "outDir": "dist/client/platform-browser",
       "assets": [
         "assets",
         "favicon.ico"
@@ -32,7 +32,7 @@
       "name": "ng-starter",
       "platform": "server",
       "root": "src",
-      "outDir": "dist-server",
+      "outDir": "dist/client/platform-server",
       "main": "main-server.ts",
       "tsconfig": "tsconfig.server.json",
       "environmentSource": "environments/environment.ts",
