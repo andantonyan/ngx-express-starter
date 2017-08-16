@@ -6,13 +6,14 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build-universal": "ng build --prod && ng build --prod --app ng-starter --output-hashing=none",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^4.2.4",
+    "@angular/animations": "^4.3.4",
     "@angular/common": "^4.2.4",
     "@angular/compiler": "^4.2.4",
     "@angular/core": "^4.2.4",
@@ -20,8 +21,11 @@
     "@angular/http": "^4.2.4",
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
+    "@angular/platform-server": "^4.3.4",
     "@angular/router": "^4.2.4",
+    "@nguniversal/express-engine": "^1.0.0-beta.2",
     "core-js": "^2.4.1",
+    "express": "^4.15.4",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
   },

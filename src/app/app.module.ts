@@ -8,7 +8,8 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    // BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'ng-starter' })
   ],
   providers: [],
   bootstrap: [AppComponent]
