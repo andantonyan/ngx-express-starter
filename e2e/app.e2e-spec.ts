@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('ng-starter App', () => {
+describe('ngx-express-starter App', () => {
   let page: AppPage;
 
   beforeEach(() => {

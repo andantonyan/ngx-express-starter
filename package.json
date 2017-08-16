@@ -1,12 +1,12 @@
 {
-  "name": "ng-starter",
+  "name": "ngx-express-starter",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "dev": "concurrently --kill-others \"npm run _server:run\" \"ng serve --progress=false --proxy-config proxy.conf.json\"",
-    "start": "DEBUG=ng-starter node dist/server/bin/www.js",
-    "start-universal": "DEBUG=ng-starter UNIVERSAL_APP=true node dist/server/bin/www.js",
+    "start": "DEBUG=ngx-express-starter node dist/server/bin/www.js",
+    "start-universal": "DEBUG=ngx-express-starter UNIVERSAL_APP=true node dist/server/bin/www.js",
     "build": "npm run _client:build && npm run _server:build",
     "build-universal": "npm run _client:build:universal && npm run _server:build",
     "test:client": "ng test",
@@ -18,10 +18,10 @@
     "_server:run": "tsc -p ./server && concurrently \"tsc -w -p ./server\" \"nodemon dist/server/bin/www.js\" ",
     "_server:build": "tsc -p ./server",
     "_client:build": "ng build --prod",
-    "_client:build:universal": "ng build --prod && ng build --prod --app ng-starter --output-hashing=none"
+    "_client:build:universal": "ng build --prod && ng build --prod --app ngx-express-starter --output-hashing=none"
   },
   "repository": {
-    "url": "https://github.com/andantonyan/ng-starter"
+    "url": "https://github.com/andantonyan/ngx-express-starter"
   },
   "private": true,
   "dependencies": {

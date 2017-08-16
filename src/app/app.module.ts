@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     // BrowserModule,
-    BrowserModule.withServerTransition({ appId: 'ng-starter' })
+    BrowserModule.withServerTransition({ appId: 'ngx-express-starter' })
   ],
   providers: [],
   bootstrap: [AppComponent]
