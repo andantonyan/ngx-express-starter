@@ -2,7 +2,7 @@ import { join } from 'path';
 import { existsSync } from 'fs';
 import { extend } from 'lodash';
 import { IConfig } from '../types';
-const debug = require('debug')('ng-starter:config');
+const debug = require('debug')('ngx-express-starter:config');
 
 /**
  * Create application configurations

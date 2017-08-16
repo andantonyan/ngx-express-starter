@@ -3,7 +3,7 @@
 import * as http from 'http';
 import { app } from '../app';
 import * as config from '../config';
-const debug = require('debug')('ng-starter');
+const debug = require('debug')('ngx-express-starter');
 
 /**
  * Get port from environment and store in Express.
