@@ -57,7 +57,14 @@ app.use('/api/info', infoRouter);
 app.use(express.static(path.join(__dirname, '../client/platform-browser')));
 
 function universalRouter(req, res) {
-  res.render('index', { req, res });
+  res.render('index', {
+    req,
+    res,
+    providers: [{
+      provide: 'serverUrl',
+      useValue: `${req.protocol}://${req.get('host')}`
+    }]
+  });
 }
 
 function staticRouter(req, res) {
