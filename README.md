@@ -30,4 +30,3 @@ Run `npm run test:client` to execute the unit tests via [Karma](https://karma-ru
 
 Run `ng e2e:client` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `npm run dev`.
-
