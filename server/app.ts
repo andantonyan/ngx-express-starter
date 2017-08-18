@@ -9,6 +9,7 @@ import * as config from './config';
 import { randomBytes } from 'crypto';
 import * as ngUniversal from '@nguniversal/express-engine';
 import 'zone.js/dist/zone-node';
+import 'reflect-metadata';
 
 import { infoRouter } from './routes/info/info.route';
 import { logger, loggerStream } from './services/util/util.service';
