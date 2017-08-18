@@ -1,5 +1,20 @@
-<md-sidenav [opened]="open">
-  <md-nav-list>
-    <ng-content></ng-content>
-  </md-nav-list>
-</md-sidenav>
+<md-sidenav-container>
+  <md-sidenav [opened]="open"
+              [mode]="mode"
+              color="primary"
+              (close)="onClose.emit()">
+    <md-nav-list>
+      <app-nav-item
+        (activate)="onItemActivate.emit()"
+        icon="home"
+        routerLink=""
+        [activeClass]="[isHomeActive]">Home</app-nav-item>
+      <app-nav-item
+        (activate)="onItemActivate.emit()"
+        icon="dashboard"
+        routerLink="/dashboard"
+        routerLinkActive="is-active">Dashboard</app-nav-item>
+    </md-nav-list>
+  </md-sidenav>
+  <ng-content></ng-content>
+</md-sidenav-container>

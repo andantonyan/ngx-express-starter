@@ -1,5 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-nav-item',
@@ -8,7 +7,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class NavItemComponent {
   @Input() icon = '';
+  @Input() svgIcon = '';
   @Input() hint = '';
-  @Input() routerLink: string | any[] = '/';
+  @Input() routerLink: string | any[];
+  @Input() routerLinkActive: any | any[] = '';
+  @Input() activeClass: any | any[] = '';
+  @Input() chip: number;
   @Output() activate = new EventEmitter();
 }

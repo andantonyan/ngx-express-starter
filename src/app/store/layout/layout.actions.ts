@@ -1,17 +1,19 @@
 import { Action } from '@ngrx/store';
+import { type } from '../../../util';
 
-export const OPEN_SIDENAV =   '[Layout] Open Sidenav';
-export const CLOSE_SIDENAV =  '[Layout] Close Sidenav';
+export const ActionTypes = {
+  OPEN_SIDENAV:   type('[Layout] Open Sidenav'),
+  CLOSE_SIDENAV:  type('[Layout] Close Sidenav')
+};
 
 
 export class OpenSidenavAction implements Action {
-  readonly type = OPEN_SIDENAV;
+  type = ActionTypes.OPEN_SIDENAV;
 }
 
 export class CloseSidenavAction implements Action {
-  readonly type = CLOSE_SIDENAV;
+  type = ActionTypes.CLOSE_SIDENAV;
 }
-
 
 export type Actions
   = OpenSidenavAction

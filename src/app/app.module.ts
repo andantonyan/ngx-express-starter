@@ -9,7 +9,10 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterStoreModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { MdButtonModule, MdIconModule, MdLineModule, MdListModule, MdSidenavModule, MdToolbarModule } from '@angular/material';
+import {
+  MdButtonModule, MdChipsModule, MdIconModule, MdLineModule, MdListModule, MdSidenavModule,
+  MdToolbarModule
+} from '@angular/material';
 
 import { AppComponent, DashboardComponent, } from './containers';
 import { ChunkPipe, EllipsisPipe, FormatDatePipe, FromNowPipe, KeysOrderPipe, KeysPipe } from './pipes';
@@ -55,7 +58,8 @@ import { LayoutComponent, SidenavComponent, ToolbarComponent, NavItemComponent }
     MdToolbarModule,
     MdButtonModule,
     MdListModule,
-    MdLineModule
+    MdLineModule,
+    MdChipsModule
   ],
   providers: [
     AuthGuard,
