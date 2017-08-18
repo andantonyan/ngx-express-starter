@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterStoreModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdButtonModule, MdIconModule, MdLineModule, MdListModule, MdSidenavModule, MdToolbarModule } from '@angular/material';
 
 import { AppComponent, DashboardComponent, } from './containers';
 import { ChunkPipe, EllipsisPipe, FormatDatePipe, FromNowPipe, KeysOrderPipe, KeysPipe } from './pipes';
@@ -17,13 +18,18 @@ import { AuthEffects, reducer, } from './store';
 import { AuthGuard, } from './guards';
 import { appRoutes } from './app.routes';
 
-// import {} from './components';
+import { LayoutComponent, SidenavComponent, ToolbarComponent, NavItemComponent } from './components';
+
 // import {} from './directives';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
+    LayoutComponent,
+    ToolbarComponent,
+    SidenavComponent,
+    NavItemComponent,
     EllipsisPipe,
     KeysPipe,
     KeysOrderPipe,
@@ -44,6 +50,12 @@ import { appRoutes } from './app.routes';
     RouterStoreModule.connectRouter(),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(AuthEffects),
+    MdIconModule,
+    MdSidenavModule,
+    MdToolbarModule,
+    MdButtonModule,
+    MdListModule,
+    MdLineModule
   ],
   providers: [
     AuthGuard,

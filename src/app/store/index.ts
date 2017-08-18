@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 import { compose } from '@ngrx/core/compose';
 import { storeFreeze } from 'ngrx-store-freeze';
 import * as fromAuth from './auth/auth.reducer';
+import * as fromLayout from './layout/layout.reducer';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
@@ -14,6 +15,7 @@ import * as fromAuth from './auth/auth.reducer';
  */
 export interface State {
   auth: fromAuth.State;
+  layout: fromLayout.State;
 }
 
 
@@ -27,6 +29,7 @@ export interface State {
 const reducers = {
   auth: fromAuth.reducer,
   router: fromRouter.routerReducer,
+  layout: fromLayout.reducer
 };
 
 
@@ -47,3 +50,9 @@ export const getAuthState = (state: State) => state.auth;
  * Auth Reducers
  */
 export const getAuthCurrentUser = createSelector(getAuthState, fromAuth.getCurrentUser);
+
+/**
+ * Layout Reducers
+ */
+export const getLayoutState = (state: State) => state.layout;
+export const getShowSidenav = createSelector(getLayoutState, fromLayout.getShowSidenav);
