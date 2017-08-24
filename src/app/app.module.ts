@@ -14,21 +14,21 @@ import {
   MdToolbarModule
 } from '@angular/material';
 
-import { AppComponent, DashboardComponent, } from './containers';
+import { AppComponent, DashboardComponent, NotFoundComponent } from './containers';
+import { LayoutComponent, SidenavComponent, ToolbarComponent, NavItemComponent } from './components';
 import { ChunkPipe, EllipsisPipe, FormatDatePipe, FromNowPipe, KeysOrderPipe, KeysPipe } from './pipes';
 import { AuthService, LocalStorage, UtilService } from './services';
+// import {} from './directives';
 import { AuthEffects, reducer, } from './store';
 import { AuthGuard, } from './guards';
 import { appRoutes } from './app.routes';
 
-import { LayoutComponent, SidenavComponent, ToolbarComponent, NavItemComponent } from './components';
-
-// import {} from './directives';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
+    NotFoundComponent,
     LayoutComponent,
     ToolbarComponent,
     SidenavComponent,

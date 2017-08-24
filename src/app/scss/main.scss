@@ -1,2 +1,162 @@
 :focus { outline:none; }
 ::-moz-focus-inner { border:0; }
+
+[hidden] {
+  display: none !important;
+}
+
+.star-icon {
+  font-size: 16px !important;
+  line-height: inherit !important;
+  &:before {
+    top: 0;
+    color:  #fcdd7f !important;
+  }
+}
+
+.font-8 {
+  font-size: 8px;
+}
+
+.font-9 {
+  font-size: 9px;
+}
+
+.font-10 {
+  font-size: 12px;
+}
+
+.font-12 {
+  font-size: 12px;
+}
+
+.font-14 {
+  font-size: 14px;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
+.font-18 {
+  font-size: 18px;
+}
+
+.font-20 {
+  font-size: 20px;
+}
+
+.font-25 {
+  font-size: 25px;
+}
+
+.font-30 {
+  font-size: 30px;
+}
+
+.color-gray {
+  color: #484848;
+}
+
+.color-light-gray {
+  color: #f1f0f0;
+}
+
+.color-green {
+  color: #80d47f;
+}
+
+.color-white {
+  color: #fff;
+}
+
+.color-blue {
+  color: #6fb5fc;
+}
+
+.color-facebook {
+  color: #3A589B;
+}
+
+.color-red {
+  color: #fc6f6f;
+}
+
+.color-yellow {
+  color: #fcdd7f;
+}
+
+.accent-color-white {
+  color: #ffffff !important;
+}
+
+.color-light-pink {
+  color: #8b59e4;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.background-light-gray {
+  background-color: #f1f0f0;
+}
+
+.background-lightest-gray {
+  background-color: #f8f8f8;
+}
+
+.background-blue {
+  background: #6fb5fc;
+}
+
+.background-light-pink {
+  background-color: #8b59e4;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.font-uppercase {
+  text-transform: uppercase;
+}
+
+.padding-15 {
+  padding: 15px;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.cart-avatar {
+  background-size: cover;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+};
+
+.clearfix {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.remove-margin {
+  margin: 0;
+}
