@@ -14,5 +14,10 @@ export class UtilService {
 
     return type;
   }
+
+  static getRouteDataByKey(activatedRoute, key: string): any {
+    return activatedRoute.snapshot.data[key] ||
+      (activatedRoute.snapshot.children.length && activatedRoute.snapshot.children[0].data[key]);
+  }
   constructor() {}
 }

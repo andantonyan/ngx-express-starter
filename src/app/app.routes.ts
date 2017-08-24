@@ -5,14 +5,23 @@ export const appRoutes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    data: {
+      showSidenav: true
+    }
   },
   {
     path: 'login',
     component: LoginComponent,
+    data: {
+      showSidenav: false
+    }
   },
   {
     path: '404',
-    component: NotFoundComponent
+    component: NotFoundComponent,
+    data: {
+      showSidenav: false
+    }
   },
   {
     path: '**',
