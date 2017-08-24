@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { DashboardComponent, NotFoundComponent } from './containers';
+import { HomeComponent, NotFoundComponent } from './containers';
 
 export const appRoutes: Routes = [
   {
-    path: 'dashboard',
-    component: DashboardComponent,
+    path: '',
+    component: HomeComponent,
   },
   {
     path: '404',

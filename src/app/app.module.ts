@@ -14,7 +14,7 @@ import {
   MdToolbarModule
 } from '@angular/material';
 
-import { AppComponent, DashboardComponent, NotFoundComponent } from './containers';
+import { AppComponent, HomeComponent, NotFoundComponent } from './containers';
 import { LayoutComponent, SidenavComponent, ToolbarComponent, NavItemComponent } from './components';
 import { ChunkPipe, EllipsisPipe, FormatDatePipe, FromNowPipe, KeysOrderPipe, KeysPipe } from './pipes';
 import { AuthService, LocalStorage, UtilService } from './services';
@@ -27,7 +27,7 @@ import { appRoutes } from './app.routes';
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
+    HomeComponent,
     NotFoundComponent,
     LayoutComponent,
     ToolbarComponent,

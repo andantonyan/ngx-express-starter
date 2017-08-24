@@ -6,14 +6,9 @@
     <md-nav-list>
       <app-nav-item
         (activate)="onItemActivate.emit()"
-        icon="home"
+        icon="dashboard"
         routerLink=""
         [activeClass]="[isHomeActive]">Home</app-nav-item>
-      <app-nav-item
-        (activate)="onItemActivate.emit()"
-        icon="dashboard"
-        routerLink="/dashboard"
-        routerLinkActive="is-active">Dashboard</app-nav-item>
     </md-nav-list>
   </md-sidenav>
   <ng-content></ng-content>

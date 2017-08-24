@@ -1,15 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-export interface IDashboardComponent {
+export interface IHomeComponent {
   sayHallo(): void;
 }
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class DashboardComponent implements OnInit, OnDestroy, IDashboardComponent {
+export class HomeComponent implements OnInit, OnDestroy, IHomeComponent {
   constructor() {
   }
 
