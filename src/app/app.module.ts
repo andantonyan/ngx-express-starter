@@ -10,12 +10,19 @@ import { EffectsModule } from '@ngrx/effects';
 import { RouterStoreModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {
-  MdButtonModule, MdChipsModule, MdIconModule, MdLineModule, MdListModule, MdSidenavModule,
+  MdButtonModule,
+  MdChipsModule,
+  MdIconModule,
+  MdInputModule,
+  MdLineModule,
+  MdListModule,
+  MdSidenavModule,
+  MdSlideToggleModule,
   MdToolbarModule
 } from '@angular/material';
 
-import { AppComponent, HomeComponent, NotFoundComponent } from './containers';
-import { LayoutComponent, SidenavComponent, ToolbarComponent, NavItemComponent } from './components';
+import { AppComponent, HomeComponent, LoginComponent, NotFoundComponent } from './containers';
+import { LayoutComponent, NavItemComponent, SidenavComponent, ToolbarComponent } from './components';
 import { ChunkPipe, EllipsisPipe, FormatDatePipe, FromNowPipe, KeysOrderPipe, KeysPipe } from './pipes';
 import { AuthService, LocalStorage, UtilService } from './services';
 // import {} from './directives';
@@ -28,6 +35,7 @@ import { appRoutes } from './app.routes';
   declarations: [
     AppComponent,
     HomeComponent,
+    LoginComponent,
     NotFoundComponent,
     LayoutComponent,
     ToolbarComponent,
@@ -59,7 +67,9 @@ import { appRoutes } from './app.routes';
     MdButtonModule,
     MdListModule,
     MdLineModule,
-    MdChipsModule
+    MdChipsModule,
+    MdInputModule,
+    MdSlideToggleModule
   ],
   providers: [
     AuthGuard,

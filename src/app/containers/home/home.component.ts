@@ -5,7 +5,7 @@ export interface IHomeComponent {
 }
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
