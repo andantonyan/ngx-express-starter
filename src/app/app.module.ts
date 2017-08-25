@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
@@ -22,9 +22,10 @@ import {
 } from '@angular/material';
 
 import { AppComponent, HomeComponent, LoginComponent, NotFoundComponent } from './containers';
-import { LayoutComponent, NavItemComponent, SidenavComponent, ToolbarComponent, ControlMessagesComponent } from './components';
+import { ControlMessagesComponent, LayoutComponent, NavItemComponent, SidenavComponent, ToolbarComponent } from './components';
 import { ChunkPipe, EllipsisPipe, FormatDatePipe, FromNowPipe, KeysOrderPipe, KeysPipe } from './pipes';
 import { AuthService, LocalStorage, UtilService, ValidationService } from './services';
+import { CustomHeadersInterceptor } from './interceptors';
 // import {} from './directives';
 import { AuthEffects, reducer, } from './store';
 import { AuthGuard, } from './guards';
@@ -52,7 +53,7 @@ import { appRoutes } from './app.routes';
   imports: [
     BrowserModule.withServerTransition({ appId: 'ngx-express-starter' }),
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes, { useHash: false }),
@@ -72,6 +73,11 @@ import { appRoutes } from './app.routes';
     MdSlideToggleModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CustomHeadersInterceptor,
+      multi: true
+    },
     AuthGuard,
     AuthService,
     LocalStorage,
