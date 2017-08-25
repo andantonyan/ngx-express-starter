@@ -9,6 +9,8 @@ export interface ILoginRequest {
   rememberMe?: boolean;
 }
 
-export interface ILoginResponse extends IUser {
+export interface ILoginResponse {
+  token: string;
+  user: IUser;
 }
 

@@ -11,3 +11,10 @@ export interface ILoginRequest {
 
 export interface ILoginResponse extends IUser {
 }
+
+/**
+ * Path /api/auth/user
+ */
+export interface IAuthCurrentUserRequest {}
+
+export interface IAuthCurrentUserResponse extends IUser {}

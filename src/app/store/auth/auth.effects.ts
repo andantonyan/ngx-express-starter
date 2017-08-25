@@ -18,7 +18,7 @@ export class AuthEffects {
     .map((action: authAction.LoginAction) => action.payload)
     .switchMap(options => {
       return this._authService.login(options)
-        .map(response => location.reload())
+        .map(response => new authAction.LoginSuccessAction(response))
         .catch(err => of(new authAction.LoginErrorAction(err)));
     });
 
