@@ -5,20 +5,22 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/skip';
 import 'rxjs/add/operator/takeUntil';
 import { Injectable } from '@angular/core';
-import { Actions } from '@ngrx/effects';
+import { Actions, Effect } from '@ngrx/effects';
 import { AuthService } from '../../services/auth/auth.service';
+import * as authAction from '../../store/auth/auth.actions';
+import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class AuthEffects {
-  // @Effect()
-  // public login$ = this._actions$
-  //   .ofType(authAction.ActionTypes.LOGIN)
-  //   .map((action: authAction.LoginAction) => action.payload)
-  //   .switchMap(options => {
-  //     return this._authService.login(options)
-  //       .map(response => location.reload())
-  //       .catch(err => of(new authAction.LoginErrorAction(err)))
-  //   });
+  @Effect()
+  public login$ = this._actions$
+    .ofType(authAction.ActionTypes.LOGIN)
+    .map((action: authAction.LoginAction) => action.payload)
+    .switchMap(options => {
+      return this._authService.login(options)
+        .map(response => location.reload())
+        .catch(err => of(new authAction.LoginErrorAction(err)));
+    });
 
   constructor(private _actions$: Actions, private _authService: AuthService) { }
 }

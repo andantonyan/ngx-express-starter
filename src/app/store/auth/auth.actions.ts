@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import { type } from '../../../util';
+import { ILoginRequest, ILoginResponse } from '../../models/api';
 
 /**
  * For each action type in an action group, make a simple
@@ -18,11 +19,17 @@ export const ActionTypes = {
 export class LoginAction implements Action {
   type = ActionTypes.LOGIN;
 
-  constructor(public payload: any) { }
+  constructor(public payload: ILoginRequest) { }
 }
 
 export class LoginSuccessAction implements Action {
   type = ActionTypes.LOGIN_SUCCESS;
+
+  constructor(public payload: ILoginResponse) { }
+}
+
+export class LoginErrorAction implements Action {
+  type = ActionTypes.LOGIN_ERROR;
 
   constructor(public payload: any) { }
 }
@@ -30,3 +37,4 @@ export class LoginSuccessAction implements Action {
 export type Actions
   = LoginAction
   | LoginSuccessAction
+  | LoginErrorAction;

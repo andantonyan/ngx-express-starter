@@ -22,14 +22,13 @@ import {
 } from '@angular/material';
 
 import { AppComponent, HomeComponent, LoginComponent, NotFoundComponent } from './containers';
-import { LayoutComponent, NavItemComponent, SidenavComponent, ToolbarComponent } from './components';
+import { LayoutComponent, NavItemComponent, SidenavComponent, ToolbarComponent, ControlMessagesComponent } from './components';
 import { ChunkPipe, EllipsisPipe, FormatDatePipe, FromNowPipe, KeysOrderPipe, KeysPipe } from './pipes';
-import { AuthService, LocalStorage, UtilService } from './services';
+import { AuthService, LocalStorage, UtilService, ValidationService } from './services';
 // import {} from './directives';
 import { AuthEffects, reducer, } from './store';
 import { AuthGuard, } from './guards';
 import { appRoutes } from './app.routes';
-
 
 @NgModule({
   declarations: [
@@ -41,6 +40,7 @@ import { appRoutes } from './app.routes';
     ToolbarComponent,
     SidenavComponent,
     NavItemComponent,
+    ControlMessagesComponent,
     EllipsisPipe,
     KeysPipe,
     KeysOrderPipe,
@@ -75,7 +75,8 @@ import { appRoutes } from './app.routes';
     AuthGuard,
     AuthService,
     LocalStorage,
-    UtilService
+    UtilService,
+    ValidationService
   ],
   bootstrap: [AppComponent]
 })
