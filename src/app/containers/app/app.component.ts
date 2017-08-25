@@ -34,15 +34,6 @@ export class AppComponent implements OnInit, IAppComponent {
       this._store.dispatch(new layout.CloseSidenavAction());
     }
 
-    this._router.events.subscribe((event: any) => {
-      if (event instanceof NavigationStart) {
-      } else if (event instanceof NavigationEnd) {
-        if (UtilService.getCurrentDevice() !== 'DESKTOP') {
-          this._store.dispatch(new layout.CloseSidenavAction());
-        }
-      }
-    });
-
     this.showSidenav$.subscribe(state =>  this.currentSideNavState = state);
 
     this._router.events.subscribe((event: any) => {
