@@ -11,13 +11,22 @@ import { RouterStoreModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {
   MdButtonModule,
+  MdCardModule,
+  MdCheckboxModule,
   MdChipsModule,
+  MdDialogModule,
   MdIconModule,
   MdInputModule,
-  MdLineModule,
   MdListModule,
+  MdMenuModule,
+  MdPaginatorModule,
+  MdProgressBarModule,
+  MdRadioModule,
+  MdSelectModule,
   MdSidenavModule,
   MdSlideToggleModule,
+  MdSnackBarModule,
+  MdTabsModule,
   MdToolbarModule
 } from '@angular/material';
 
@@ -62,15 +71,24 @@ import { appRoutes } from './app.routes';
     RouterStoreModule.connectRouter(),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(AuthEffects),
-    MdIconModule,
-    MdSidenavModule,
-    MdToolbarModule,
     MdButtonModule,
-    MdListModule,
-    MdLineModule,
+    MdCardModule,
+    MdCheckboxModule,
     MdChipsModule,
+    MdDialogModule,
+    MdIconModule,
     MdInputModule,
-    MdSlideToggleModule
+    MdListModule,
+    MdMenuModule,
+    MdPaginatorModule,
+    MdProgressBarModule,
+    MdRadioModule,
+    MdSelectModule,
+    MdSidenavModule,
+    MdSlideToggleModule,
+    MdSnackBarModule,
+    MdTabsModule,
+    MdToolbarModule
   ],
   providers: [
     {

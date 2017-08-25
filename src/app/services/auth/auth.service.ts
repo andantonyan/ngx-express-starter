@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
-import { ILoginRequest, ILoginResponse } from '../../models/api';
+import { IAuthCurrentUserRequest, IAuthCurrentUserResponse, ILoginRequest, ILoginResponse } from '../../models/api';
 import { Observable } from 'rxjs/Observable';
-import { IAuthCurrentUserRequest, IAuthCurrentUserResponse } from '../../../../server/models/api';
 import { HttpClient } from '@angular/common/http';
 
 export interface IAuthService {

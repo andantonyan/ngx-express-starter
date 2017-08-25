@@ -7,6 +7,7 @@ import * as fromRoot from '../../store';
 import * as layout from '../../store/layout/layout.actions';
 import { UtilService } from '../../services/util/util.service';
 import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { IUser } from '../../models/user';
 
 export interface IAppComponent {
   closeSidenav(): void;
@@ -20,10 +21,12 @@ export interface IAppComponent {
 })
 export class AppComponent implements OnInit, IAppComponent {
   showSidenav$: Observable<boolean>;
+  user$: Observable<IUser>;
   sideNavMode = 'side';
   currentSideNavState: boolean;
   constructor(private _store: Store<fromRoot.State>, private _router: Router, private _activatedRoute: ActivatedRoute) {
     this.showSidenav$ = this._store.select(fromRoot.getShowSidenav);
+    this.user$ = this._store.select(fromRoot.getAuthCurrentUser);
   }
 
   ngOnInit(): void {

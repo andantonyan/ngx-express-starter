@@ -2,3 +2,31 @@
   cursor: pointer;
   padding: 5px;
 }
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+md-progress-bar {
+  position: fixed;
+  z-index: 10;
+}
+
+.toolbar-actions {
+  display: flex;
+}
+
+/deep/ .mat-menu-panel.notification-menu {
+  width: 380px;
+  max-width: 380px;
+  margin-left: -100px;
+}
+
+.header-image {
+  background-image: url('../../../assets/avatar.png');
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #ffffff;
+}

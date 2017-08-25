@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { type } from '../../../util';
-import { ILoginRequest, ILoginResponse } from '../../models/api';
+import { IAuthCurrentUserRequest, IAuthCurrentUserResponse, ILoginRequest, ILoginResponse } from '../../models/api';
 
 /**
  * For each action type in an action group, make a simple
@@ -14,6 +14,10 @@ export const ActionTypes = {
   LOGIN: type('[Auth] Login'),
   LOGIN_SUCCESS: type('[Auth] Login Success'),
   LOGIN_ERROR: type('[Auth] Login Error'),
+
+  FETCH_USER: type('[Auth] Fetch User'),
+  FETCH_USER_SUCCESS: type('[Auth] Fetch User Success'),
+  FETCH_USER_ERROR: type('[Auth] Fetch User Error')
 };
 
 export class LoginAction implements Action {
@@ -34,7 +38,28 @@ export class LoginErrorAction implements Action {
   constructor(public payload: any) { }
 }
 
+export class FetchUserAction implements Action {
+  type = ActionTypes.FETCH_USER;
+
+  constructor(public payload: IAuthCurrentUserRequest) { }
+}
+
+export class FetchUserSuccessAction implements Action {
+  type = ActionTypes.FETCH_USER_SUCCESS;
+
+  constructor(public payload: IAuthCurrentUserResponse) { }
+}
+
+export class FetchUserErrorAction implements Action {
+  type = ActionTypes.FETCH_USER_ERROR;
+
+  constructor(public payload: any) { }
+}
+
 export type Actions
   = LoginAction
   | LoginSuccessAction
-  | LoginErrorAction;
+  | LoginErrorAction
+  | FetchUserAction
+  | FetchUserSuccessAction
+  | FetchUserErrorAction;

@@ -22,6 +22,16 @@ export function reducer(state = initialState, action: authAction.Actions): State
       return assign({}, state, { user: null });
     }
 
+    case authAction.ActionTypes.FETCH_USER_SUCCESS: {
+      const user = action.payload;
+      return assign({}, state, { user });
+    }
+
+    case authAction.ActionTypes.FETCH_USER_ERROR: {
+      const error: any = action.payload;
+      return assign({}, state, { user: null });
+    }
+
     default: {
       return state;
     }

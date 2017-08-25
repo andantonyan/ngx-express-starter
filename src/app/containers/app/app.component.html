@@ -2,6 +2,21 @@
   <app-toolbar (toggleMenu)="toggleSidenav($event)">
     <span class="home" [routerLink]="'/'">Ngx Express</span>
     <span class="toolbar-spacer"></span>
+    <div class="toolbar-actions" *ngIf="(user$ | async)">
+      <!--<div class="header-image cursor-pointer" [mdMenuTriggerFor]="menu"></div>-->
+      <span class="cursor-pointer" [mdMenuTriggerFor]="menu">{{(user$ | async)?.username}}</span>
+      <md-menu #menu="mdMenu" [overlapTrigger]="false"
+               yPosition="above" xPosition="before">
+        <button md-menu-item>
+          <md-icon>account_circle</md-icon>
+          <span>Account</span>
+        </button>
+        <button md-menu-item>
+          <md-icon>power_settings_new</md-icon>
+          <span>Log out</span>
+        </button>
+      </md-menu>
+    </div>
   </app-toolbar>
   <app-sidenav [open]="currentSideNavState"
                (onClose)="closeSidenav()"
