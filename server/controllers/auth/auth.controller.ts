@@ -18,5 +18,9 @@ const loginHandler = (req: Request, res: Response, next: NextFunction) => {
     .catch(next);
 };
 
-export { loginHandler };
+const userHandler = (req: Request, res: Response, next: NextFunction) => {
+  res.status(200).json(req['appUser']);
+};
+
+export { loginHandler, userHandler };
 
