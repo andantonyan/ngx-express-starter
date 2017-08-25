@@ -12,6 +12,7 @@ import 'zone.js/dist/zone-node';
 import 'reflect-metadata';
 
 import { infoRouter } from './routes/info/info.route';
+import { authRouter } from './routes/auth/auth.route';
 import { cors, logger, loggerStream } from './services/util/util.service';
 
 const app: express.Application = express();
@@ -60,6 +61,7 @@ if (process.env.UNIVERSAL_APP) {
 // api routes
 app.get('/', process.env.UNIVERSAL_APP ? universalRouter : staticRouter);
 app.use('/api/info', infoRouter);
+app.use('/api/auth', authRouter);
 
 // catch 404 and forward to error handler
 app.use((req: express.Request, res: express.Response, next) => {

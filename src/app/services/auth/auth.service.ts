@@ -25,7 +25,7 @@ export class AuthService implements IAuthService {
       .map(response => response.json())
       .map(body => {
         localStorage.setItem('token', body.token);
-        localStorage.setItem('user', body.user);
+        localStorage.setItem('user', JSON.stringify(body.user));
         return body;
       });
   }
