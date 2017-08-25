@@ -12,12 +12,11 @@ import 'zone.js/dist/zone-node';
 import 'reflect-metadata';
 
 import { infoRouter } from './routes/info/info.route';
-import { logger, loggerStream } from './services/util/util.service';
+import { cors, logger, loggerStream } from './services/util/util.service';
 
 const app: express.Application = express();
 
 app.disable('x-powered-by');
-
 app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(compression());
@@ -31,30 +30,7 @@ app.use(session({
   cookie: { maxAge: null }
 }));
 app.use(cookie());
-app.use((req, res, next) => {
-  if (req.headers['origin']) {
-    res.header('Access-Control-Allow-Origin', req.headers['origin']);
-    res.header('Access-Control-Allow-Credentials', 'true');
-  } else {
-    res.header('Access-Control-Allow-Origin', '*');
-  }
-  res.header('Access-Control-Expose-Headers', 'X-Auth-Token, X-Auth-DeviceId');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers',
-    'Content-Type, Authorization, Content-Length, X-Requested-With, X-Auth-Token, X-Auth-DeviceId');
-
-  // intercept OPTIONS method
-  if ('OPTIONS' === req.method) {
-    return res.status(200).end();
-  }
-
-  next();
-});
-
-// api routes
-app.get('/', process.env.UNIVERSAL_APP ? universalRouter : staticRouter);
-app.use('/api/info', infoRouter);
-
+app.use(cors);
 app.use(express.static(path.join(__dirname, '../client/platform-browser')));
 
 function universalRouter(req, res) {
@@ -81,23 +57,26 @@ if (process.env.UNIVERSAL_APP) {
   app.set('views', path.join(__dirname, '../client/platform-browser'));
 }
 
+// api routes
 app.get('/', process.env.UNIVERSAL_APP ? universalRouter : staticRouter);
+app.use('/api/info', infoRouter);
 
 // catch 404 and forward to error handler
 app.use((req: express.Request, res: express.Response, next) => {
-  const err = new Error('Not Found');
-  next(err);
+  const error = new Error('NOT_FOUND');
+  next({error, status: 404});
 });
 
 // production error handler
 // no stacktrace leaked to user
-app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
-  res.status(err.status || 500);
+this.app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+  const statusCode = err.status || err.statusCode || 500;
   logger.error(err);
-  res.json({
-    error: {},
-    message: err.message,
-  });
+  const customError = {
+    stack: config.env !== 'production' && err.error && err.error.stack,
+    message: err.error ? (err.error.message || 'INTERNAL_ERROR') : 'INTERNAL_ERROR'
+  };
+  res.status(statusCode).send(customError);
 });
 
 export { app };
