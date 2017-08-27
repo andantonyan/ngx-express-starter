@@ -37,7 +37,7 @@ import { AuthService, LocalStorage, UtilService, ValidationService } from './ser
 import { CustomHeadersInterceptor } from './interceptors';
 // import {} from './directives';
 import { AuthEffects, reducer, } from './store';
-import { AuthGuard, } from './guards';
+import { AuthGuard, NotAuthenticatedGuard } from './guards';
 import { appRoutes } from './app.routes';
 
 @NgModule({
@@ -97,6 +97,7 @@ import { appRoutes } from './app.routes';
       multi: true
     },
     AuthGuard,
+    NotAuthenticatedGuard,
     AuthService,
     LocalStorage,
     UtilService,

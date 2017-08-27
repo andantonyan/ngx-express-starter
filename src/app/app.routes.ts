@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent, NotFoundComponent, LoginComponent } from './containers';
-import { AuthGuard } from './guards/auth/auth.guard';
+import { AuthGuard, NotAuthenticatedGuard } from './guards';
 
 export const appRoutes: Routes = [
   {
@@ -14,6 +14,7 @@ export const appRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [NotAuthenticatedGuard],
     data: {
       showSidenav: false
     }
