@@ -3,7 +3,7 @@
     <span class="home" [routerLink]="'/'">Ngx Express</span>
     <span class="toolbar-spacer"></span>
     <div class="toolbar-actions" *ngIf="(user$ | async)">
-      <span>{{(user$ | async)?.username}}</span>&nbsp;
+      <span class="cursor-pointer" [mdMenuTriggerFor]="menu">{{(user$ | async)?.username}}</span>&nbsp;
       <md-icon class="account-circle" [mdMenuTriggerFor]="menu">account_circle</md-icon>
       <md-menu #menu="mdMenu" [overlapTrigger]="false"
                yPosition="above" xPosition="before">
