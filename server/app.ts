@@ -15,6 +15,21 @@ import { infoRouter } from './routes/info/info.route';
 import { authRouter } from './routes/auth/auth.route';
 import { cors, logger, loggerStream } from './services/util/util.service';
 
+function universalRouter(req, res) {
+  res.render('index', {
+    req,
+    res,
+    providers: [{
+      provide: 'serverUrl',
+      useValue: `${req.protocol}://${req.get('host')}`
+    }]
+  });
+}
+
+function staticRouter(req, res) {
+  res.sendfile(path.join(__dirname, '../client/platform-browser/index.html'));
+}
+
 const app: express.Application = express();
 
 app.disable('x-powered-by');
@@ -34,21 +49,6 @@ app.use(cookie());
 app.use(cors);
 app.use(express.static(path.join(__dirname, '../client/platform-browser')));
 
-function universalRouter(req, res) {
-  res.render('index', {
-    req,
-    res,
-    providers: [{
-      provide: 'serverUrl',
-      useValue: `${req.protocol}://${req.get('host')}`
-    }]
-  });
-}
-
-function staticRouter(req, res) {
-  res.sendfile(path.join(__dirname, '../client/platform-browser/index.html'));
-}
-
 if (process.env.UNIVERSAL_APP) {
   const appServer = require('../client/platform-server/main.bundle');
   app.engine('html', ngUniversal.ngExpressEngine({
@@ -59,9 +59,9 @@ if (process.env.UNIVERSAL_APP) {
 }
 
 // api routes
-app.get('/', process.env.UNIVERSAL_APP ? universalRouter : staticRouter);
 app.use('/api/info', infoRouter);
 app.use('/api/auth', authRouter);
+app.get('/*', process.env.UNIVERSAL_APP ? universalRouter : staticRouter);
 
 // catch 404 and forward to error handler
 app.use((req: express.Request, res: express.Response, next) => {
