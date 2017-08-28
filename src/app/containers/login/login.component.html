@@ -1,6 +1,6 @@
 <div class="columns remove-margin">
   <div class="column is-4 is-offset-4">
-    <div class="notification is-warning" *ngFor="let error of errors$ | async">
+    <div class="notification is-danger" *ngFor="let error of errors$ | async">
       <button class="delete" (click)="removeError(error)"></button>
       {{error.message}}
     </div>
@@ -15,7 +15,7 @@
         </md-input-container>
         <app-control-messages [control]="loginForm.controls.password"></app-control-messages><br>
         <button color="primary" md-raised-button>Login</button>
-        <md-slide-toggle formControlName="rememberMe" color="primary"><small>Remember me!</small></md-slide-toggle>
+        <md-checkbox formControlName="rememberMe" color="primary">Remember me!</md-checkbox>
       </form>
     </div>
   </div>
