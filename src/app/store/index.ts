@@ -1,4 +1,5 @@
 export { AuthEffects } from './auth/auth.effects';
+export { ErrorEffects } from './error/error.effects';
 
 import { createSelector } from 'reselect';
 import { ActionReducer, combineReducers } from '@ngrx/store';
@@ -7,6 +8,7 @@ import { environment } from '../../environments/environment';
 import { compose } from '@ngrx/core/compose';
 import { storeFreeze } from 'ngrx-store-freeze';
 import * as fromAuth from './auth/auth.reducer';
+import * as fromError from './error/error.reducer';
 import * as fromLayout from './layout/layout.reducer';
 
 /**
@@ -15,6 +17,7 @@ import * as fromLayout from './layout/layout.reducer';
  */
 export interface State {
   auth: fromAuth.State;
+  error: Error[];
   layout: fromLayout.State;
 }
 
@@ -28,6 +31,7 @@ export interface State {
  */
 const reducers = {
   auth: fromAuth.reducer,
+  error: fromError.reducer,
   router: fromRouter.routerReducer,
   layout: fromLayout.reducer
 };
@@ -45,6 +49,7 @@ export function reducer(state: any, action: any) {
 }
 
 export const getAuthState = (state: State) => state.auth;
+export const getErrorState = (state: State) => state.error;
 
 /**
  * Auth Reducers
@@ -56,3 +61,8 @@ export const getAuthCurrentUser = createSelector(getAuthState, fromAuth.getCurre
  */
 export const getLayoutState = (state: State) => state.layout;
 export const getShowSidenav = createSelector(getLayoutState, fromLayout.getShowSidenav);
+
+/**
+ * Error Reducers
+ */
+export const getErrors = createSelector(getErrorState, fromError.getList);

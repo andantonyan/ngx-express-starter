@@ -1,5 +1,9 @@
 <div class="columns remove-margin">
   <div class="column is-4 is-offset-4">
+    <div class="notification is-warning" *ngFor="let error of errors$ | async">
+      <button class="delete" (click)="removeError(error)"></button>
+      {{error.message}}
+    </div>
     <div class="login">
       <form class="login-container" [formGroup]="loginForm" (submit)="login()">
         <md-input-container>

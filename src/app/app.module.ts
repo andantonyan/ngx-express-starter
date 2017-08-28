@@ -36,7 +36,7 @@ import { ChunkPipe, EllipsisPipe, FormatDatePipe, FromNowPipe, KeysOrderPipe, Ke
 import { AuthService, LocalStorage, UtilService, ValidationService } from './services';
 import { CustomHeadersInterceptor } from './interceptors';
 // import {} from './directives';
-import { AuthEffects, reducer, } from './store';
+import { AuthEffects, ErrorEffects, reducer, } from './store';
 import { AuthGuard, NotAuthenticatedGuard } from './guards';
 import { appRoutes } from './app.routes';
 
@@ -71,6 +71,7 @@ import { appRoutes } from './app.routes';
     RouterStoreModule.connectRouter(),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(AuthEffects),
+    EffectsModule.run(ErrorEffects),
     MdButtonModule,
     MdCardModule,
     MdCheckboxModule,
