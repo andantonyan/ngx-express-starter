@@ -65,4 +65,6 @@ export const getShowSidenav = createSelector(getLayoutState, fromLayout.getShowS
 /**
  * Error Reducers
  */
-export const getErrors = createSelector(getErrorState, fromError.getList);
+export const getErrors = createSelector(getErrorState, fromError.getAll);
+export const getHttpErrors = createSelector(getErrorState, fromError.getHttp);
+export const getLoginHttpErrors = createSelector(getErrorState, fromError.getLoginHttp);

@@ -1,9 +1,11 @@
-import { without } from 'lodash';
+import { createSelector } from 'reselect';
+import { without, filter } from 'lodash';
 import * as errorAction from './error.actions';
+import { HttpErrorResponse } from '@angular/common/http';
 
-const initialState: Error[] = [];
+const initialState: any = [];
 
-export function reducer(state = initialState, action: errorAction.Actions): Error[] {
+export function reducer(state = initialState, action: errorAction.Actions): any[] {
   switch (action.type) {
     case errorAction.ActionTypes.ADD_ERROR: {
       return state.concat([action.payload]);
@@ -18,4 +20,10 @@ export function reducer(state = initialState, action: errorAction.Actions): Erro
     }
   }
 }
-export const getList = (state: Error[]) => state;
+export const getAll = (state: any[]) => state;
+export const getHttp = createSelector(getAll, (errors) => {
+  return filter(errors, error => error instanceof HttpErrorResponse);
+});
+export const getLoginHttp = createSelector(getHttp, (errors) => {
+  return filter(errors, error => error.url.match(/api\/auth\/login/));
+});

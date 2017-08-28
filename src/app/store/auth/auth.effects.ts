@@ -24,7 +24,7 @@ export class AuthEffects {
       return this._authService.login(options)
         .map(response => new authAction.LoginSuccessAction(response))
         .catch(err => {
-          this._store.dispatch(new errorAction.ErrorAddAction(err.error));
+          this._store.dispatch(new errorAction.ErrorAddAction(err));
           return of(new authAction.LoginErrorAction(err));
         });
     });

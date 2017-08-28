@@ -1,2 +1,2 @@
 export { UniversalInterceptor } from './universal/universal.interceptor';
-export { CustomHeadersInterceptor } from './customHeaders/customHeaders.interceptor';
+export { CustomHeadersInterceptor } from './custom-headers/customHeaders.interceptor';

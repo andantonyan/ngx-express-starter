@@ -1,2 +1,2 @@
 export { AuthGuard } from './auth/auth.guard';
-export { NotAuthenticatedGuard } from './notAuthenticated/notAuthenticated.guard';
+export { NotAuthenticatedGuard } from './not-authenticated/notAuthenticated.guard';

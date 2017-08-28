@@ -2,7 +2,7 @@
   <div class="column is-4 is-offset-4">
     <div class="notification is-danger" *ngFor="let error of errors$ | async">
       <button class="delete" (click)="removeError(error)"></button>
-      {{error.message}}
+      {{error.error.message | appErrorMessages}}
     </div>
     <div class="login">
       <form class="login-container" [formGroup]="loginForm" (submit)="login()">

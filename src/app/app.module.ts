@@ -32,7 +32,7 @@ import {
 
 import { AppComponent, HomeComponent, LoginComponent, NotFoundComponent } from './containers';
 import { ControlMessagesComponent, LayoutComponent, NavItemComponent, SidenavComponent, ToolbarComponent } from './components';
-import { ChunkPipe, EllipsisPipe, FormatDatePipe, FromNowPipe, KeysOrderPipe, KeysPipe } from './pipes';
+import { ChunkPipe, EllipsisPipe, FormatDatePipe, FromNowPipe, KeysOrderPipe, KeysPipe, ErrorMessagesPipe } from './pipes';
 import { AuthService, LocalStorage, UtilService, ValidationService } from './services';
 import { CustomHeadersInterceptor } from './interceptors';
 // import {} from './directives';
@@ -53,6 +53,7 @@ import { appRoutes } from './app.routes';
     ControlMessagesComponent,
     EllipsisPipe,
     KeysPipe,
+    ErrorMessagesPipe,
     KeysOrderPipe,
     ChunkPipe,
     FormatDatePipe,

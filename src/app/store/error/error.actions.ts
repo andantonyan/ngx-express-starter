@@ -18,7 +18,7 @@ export const ActionTypes = {
 export class ErrorAddAction implements Action {
   type = ActionTypes.ADD_ERROR;
 
-  constructor(public payload: Error) { }
+  constructor(public payload: any) { }
 }
 
 export class ErrorRemoveAction implements Action {
