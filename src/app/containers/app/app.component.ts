@@ -5,13 +5,15 @@ import { Store } from '@ngrx/store';
 
 import * as fromRoot from '../../store';
 import * as layout from '../../store/layout/layout.actions';
-import { UtilService } from '../../services/util/util.service';
+import { UtilService, AuthService } from '../../services';
+
 import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { IUser } from '../../models/user';
 
 export interface IAppComponent {
   closeSidenav(): void;
   toggleSidenav($event: Event): void;
+  logOut(): void;
 }
 
 @Component({
@@ -24,7 +26,10 @@ export class AppComponent implements OnInit, IAppComponent {
   user$: Observable<IUser>;
   sideNavMode = 'side';
   currentSideNavState: boolean;
-  constructor(private _store: Store<fromRoot.State>, private _router: Router, private _activatedRoute: ActivatedRoute) {
+  constructor(private _store: Store<fromRoot.State>,
+              private _router: Router,
+              private _activatedRoute: ActivatedRoute,
+              private _authService: AuthService) {
     this.showSidenav$ = this._store.select(fromRoot.getShowSidenav);
     this.user$ = this._store.select(fromRoot.getAuthCurrentUser);
   }
@@ -68,5 +73,10 @@ export class AppComponent implements OnInit, IAppComponent {
     } else {
       this._store.dispatch(new layout.OpenSidenavAction());
     }
+  }
+
+  // TODO: dispatch event and clear store data
+  logOut(): void {
+    this._authService.logOut();
   }
 }

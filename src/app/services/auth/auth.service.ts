@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 
 export interface IAuthService {
   login(options: ILoginRequest): Observable<ILoginResponse>;
+  logOut(): void;
   getCurrentUser(options?: IAuthCurrentUserRequest): Observable<IAuthCurrentUserResponse>;
 }
 
@@ -24,6 +25,13 @@ export class AuthService implements IAuthService {
         storeService.setItem('user', JSON.stringify(response.user));
         return response;
       });
+  }
+
+  logOut(): void {
+    const storeService = localStorage.getItem('rememberMe') === 'true' ? localStorage : sessionStorage;
+    storeService.removeItem('token');
+    storeService.removeItem('user');
+    location.href = '/login';
   }
 
   getCurrentUser(options?: IAuthCurrentUserRequest): Observable<IAuthCurrentUserResponse> {

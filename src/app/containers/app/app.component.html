@@ -7,7 +7,7 @@
       <md-icon class="account-circle" [mdMenuTriggerFor]="menu">account_circle</md-icon>
       <md-menu #menu="mdMenu" [overlapTrigger]="false"
                yPosition="above" xPosition="before">
-        <button md-menu-item>
+        <button md-menu-item (click)="logOut()">
           <md-icon>power_settings_new</md-icon>
           <span>Log out</span>
         </button>
