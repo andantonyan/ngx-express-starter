@@ -1,6 +1,6 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 
-import { NotAuthenticatedGuard } from './notAuthenticated.guard';
+import { NotAuthenticatedGuard } from './not-authenticated.guard';
 
 describe('NotAuthenticatedGuard', () => {
   beforeEach(() => {
