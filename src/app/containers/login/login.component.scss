@@ -1,8 +1,11 @@
 @import "../../scss/mixins";
 .login {
-  width: 400px;
+  width: 200px;
   margin: 16px auto;
   font-size: 16px;
+  @include desktop {
+    width: 400px;
+  }
 }
 
 .login p {
