@@ -1,4 +1,4 @@
-import { IUser } from '../../models/user';
+import { IUser } from '../../../common/models/user';
 
 const loginService = (username: string, password: string): Promise<IUser> => {
   return Promise.resolve({

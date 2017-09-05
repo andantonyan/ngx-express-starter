@@ -1,6 +1,6 @@
 import { assign } from 'lodash';
 import * as authAction from './auth.actions';
-import { IUser } from '../../models/user';
+import { IUser } from '../../../../common/models/user';
 
 export interface State {
   user: IUser;

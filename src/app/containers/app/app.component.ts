@@ -8,7 +8,7 @@ import * as layout from '../../store/layout/layout.actions';
 import { UtilService, AuthService } from '../../services';
 
 import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
-import { IUser } from '../../models/user';
+import { IUser } from '../../../../common/models/user';
 
 export interface IAppComponent {
   closeSidenav(): void;
